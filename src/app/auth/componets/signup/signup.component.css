@@ -1,0 +1,102 @@
+/* Fondo general */
+.bg {
+  background-color: #f5f5f5;
+  height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Spinner Overlay (Capa transparente encima mientras carga) */
+.spinner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Tarjeta */
+.signup-card {
+  width: 400px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Sombra un poco más oscura */
+  
+  /* CAMBIOS AQUÍ: Fondo negro y texto blanco */
+  background-color: black;
+  color: white;
+}
+
+/* Título */
+mat-card-title {
+  color: white;
+  text-align: center; /* Centrado queda mejor */
+}
+
+mat-card-title {
+  font-size: 26px;
+  font-weight: bold;
+}
+mat-card-header {
+  display: flex;
+  justify-content: center;
+  
+  /* AÑADE ESTO: */
+  margin-bottom: 30px; /* <--- Esto separa el título de los campos */
+}
+
+/* Campos de formulario */
+.full-width {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+/* Botón */
+.submit-btn {
+  margin-top: 15px;
+  font-size: 16px;
+  text-transform: uppercase;
+  /* Opcional: si quieres que el botón destaque más */
+  background-color: white !important;
+  color: black !important;
+}
+
+/* Enlace Login */
+.login-link {
+  margin-top: 15px;
+  text-align: center;
+  color: white; /* Texto "Or" en blanco */
+}
+
+.login-link a {
+  color: #82b1ff; /* Un azul clarito que resalta sobre negro */
+  text-decoration: none;
+  font-weight: bold;
+}
+mat-form-field {
+  width: 100%;
+  margin-bottom: 5px;
+
+  /* Estas variables le dicen a Angular Material que pinte todo de blanco */
+  --mdc-outlined-text-field-label-text-color: rgba(255, 255, 255, 0.7); /* Etiqueta gris claro */
+  --mdc-outlined-text-field-focus-label-text-color: white; /* Etiqueta blanca al hacer clic */
+  --mdc-outlined-text-field-input-text-color: white; /* Lo que escribes */
+  --mdc-outlined-text-field-caret-color: white; /* La barrita que parpadea */
+  --mdc-outlined-text-field-outline-color: rgba(255, 255, 255, 0.5); /* El borde */
+  --mdc-outlined-text-field-focus-outline-color: white; /* El borde al seleccionar */
+}
+
+/* Iconos (como el ojo de la contraseña) en blanco */
+::ng-deep .mat-mdc-icon-button {
+  color: white !important;
+}
+
+/* Mensajes de error (esos mejor que sigan rojos o rosas para que se vean bien) */
+mat-error {
+  color: #ff80ab !important; /* Un rosa brillante que se lee bien sobre negro */
+}

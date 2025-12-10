@@ -1,0 +1,52 @@
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  /* CAMBIOS DE COLOR AQUÍ: */
+  background-color: black; /* Fondo negro */
+  color: white;            /* Texto base blanco */
+}
+
+/* Estilo del título/logo */
+.navbar-title {
+  font-weight: bold;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin-left: 10px;
+  
+  /* Aseguramos que el título sea blanco y sin subrayado */
+  color: white; 
+  text-decoration: none;
+}
+.nav-links a {
+  color: white !important; /* El !important asegura que sobrescriba el gris por defecto de Material */
+}
+/* El truco flexible para separar logo de botones */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Contenedor de los enlaces */
+.nav-links {
+  display: flex;
+  gap: 10px; /* Espacio entre botones */
+  margin-right: 10px;
+}
+
+/* Estilo visual cuando un botón está activo/seleccionado */
+.active-link {
+  background: rgba(255, 246, 246, 0.753);
+  border-radius: 4px;
+}
+
+/* Contenedor principal para que el contenido no se pegue a los bordes */
+.content-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto; /* Centrado */
+}
