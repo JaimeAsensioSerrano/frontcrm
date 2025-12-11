@@ -1,6 +1,9 @@
 /* Fondo general */
 .bg {
-  background-color: #f5f5f5;
+  background-image: url('/coches1.jpg');
+   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   height: calc(100vh - 64px);
   display: flex;
   justify-content: center;
@@ -74,7 +77,7 @@ mat-card-header {
 }
 
 .login-link a {
-  color: #82b1ff; /* Un azul clarito que resalta sobre negro */
+  color: #69f0ae; /* Un azul clarito que resalta sobre negro */
   text-decoration: none;
   font-weight: bold;
 }

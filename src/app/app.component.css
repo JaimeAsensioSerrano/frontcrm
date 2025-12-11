@@ -9,7 +9,8 @@
 
   /* CAMBIOS DE COLOR AQUÍ: */
   background-color: black; /* Fondo negro */
-  color: white;            /* Texto base blanco */
+  color: white; 
+  padding: 10px 20px; /* Texto base blanco */
 }
 
 /* Estilo del título/logo */
@@ -45,8 +46,3 @@
 }
 
 /* Contenedor principal para que el contenido no se pegue a los bordes */
-.content-container {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto; /* Centrado */
-}

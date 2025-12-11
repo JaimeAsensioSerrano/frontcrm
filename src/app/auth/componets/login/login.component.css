@@ -1,6 +1,9 @@
 .bg {
-  min-height: 100vh;
-  background-color: #f0f2f5;
+ background-image: url('/coches1.jpg');
+   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: calc(100vh - 64px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,12 +16,53 @@
 }
 
 .child {
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background-color: black;
+  color: white;
+  width: 400px;
+  padding: 30px; /* Un poco más de padding para que respire */
+  border-radius: 8px; /* O el borde que tenga tu Sign Up */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Sombra exacta del Sign Up */
+  text-align: center;
+  margin-bottom: 100px
+}
+h1 {
+  color: white;
+  font-size: 26px; /* Tamaño del Sign Up */
+  font-weight: bold;
+  margin-bottom: 30px; /* Separación igual al Header del Sign Up */
+  text-align: center;
+}
+::ng-deep .mat-mdc-input-element {
+  color: white !important;
+  caret-color: white; /* El cursor también blanco */
+}
+
+mat-form-field {
   width: 100%;
-  max-width: 400px;
+  margin-bottom: 5px;
+
+  /* Texto de la etiqueta (Label) */
+  --mdc-outlined-text-field-label-text-color: rgba(255, 255, 255, 0.7);
+  --mdc-outlined-text-field-focus-label-text-color: white;
+
+  /* Texto que escribes (Input) */
+  --mdc-outlined-text-field-input-text-color: white;
+  --mdc-outlined-text-field-caret-color: white;
+
+  /* Bordes (Outline) */
+  --mdc-outlined-text-field-outline-color: rgba(255, 255, 255, 0.5);
+  --mdc-outlined-text-field-focus-outline-color: white;
+  
+}
+
+/* Iconos (Persona/Candado) en blanco */
+::ng-deep .mat-icon {
+  color: white !important;
+}
+.div-register {
+  margin-top: 15px;
+  text-align: center;
+  color: white;
 }
 
 .full-width {
@@ -28,7 +72,19 @@
 
 .login-btn {
   margin-top: 15px;
-  padding: 22px 0; /* Botón un poco más alto */
+  font-size: 16px;
+  text-transform: uppercase; /* Letras en mayúscula como en REGISTER */
+  background-color: white !important;
+  color: black !important;
+  font-weight: bold;
+  width: 100%;
+  border-radius: 30px; /* Redondeado */
+  padding: 5px 0;      /* Ajuste de altura */
+}
+a {
+  color: #69f0ae; /* Un verde/azul brillante para resaltar */
+  text-decoration: none;
+  font-weight: bold;
 }
 
 /* Spinner Overlay */
@@ -38,10 +94,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+  background: rgba(255, 255, 255, 0.7); /* O negra rgba(0,0,0,0.7) si prefieres */
   z-index: 1000;
   display: flex;
-  flex-direction: column; /* Para poner el texto debajo del spinner */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
