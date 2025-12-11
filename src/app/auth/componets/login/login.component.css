@@ -1,0 +1,47 @@
+.bg {
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.parent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.child {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.login-btn {
+  margin-top: 15px;
+  padding: 22px 0; /* Botón un poco más alto */
+}
+
+/* Spinner Overlay */
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+  z-index: 1000;
+  display: flex;
+  flex-direction: column; /* Para poner el texto debajo del spinner */
+  justify-content: center;
+  align-items: center;
+}
