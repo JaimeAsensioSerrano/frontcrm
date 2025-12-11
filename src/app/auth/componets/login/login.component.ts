@@ -13,6 +13,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'; 
 
 import { AuthService } from '../services/auth/auth.service';
+import { AlmacenamientoService } from '../services/almacenamiento/almacenamiento.service';
 
 @Component({
   selector: 'app-login',
@@ -41,7 +42,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private message: MatSnackBar
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -67,11 +69,28 @@ export class LoginComponent {
         console.log("RESPUESTA RECIBIDA:", res); // <--- NUEVO
 
         if (res.userId != null) {
+            const user ={
+              id: res.userId,
+              role:res.userRole
+            }
+            AlmacenamientoService.saveToken(res.jwt);
+            AlmacenamientoService.saveUser(user);
+            if(AlmacenamientoService.isAdminLoggedIn()){
+            this.router.navigateByUrl('/admin/dashboard');
+            } else if(AlmacenamientoService.isCustomerLoggedIn()){
+              this.router.navigateByUrl('/customer/dashboard');
+            } else {
+             this.snackBar.open("Credenciales incorrectas", "Cerrar", { duration: 5000 });
+
+            }
+
+
             this.snackBar.open("¡Login exitoso!", "Cerrar", { duration: 5000 });
-            this.router.navigateByUrl('/dashboard'); 
+            //this.router.navigateByUrl('/dashboard'); 
         } else {
             this.snackBar.open("Credenciales incorrectas", "Cerrar", { duration: 5000, panelClass: 'error-snackbar' });
-        }
+        
+      }
     }, (error) => {
         this.isSpinning = false;
         this.snackBar.open("Error de red o servidor", "Cerrar", { duration: 5000, panelClass: 'error-snackbar' });
