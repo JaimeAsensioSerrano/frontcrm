@@ -57,9 +57,9 @@ export class LoginComponent {
 
     this.isSpinning = true;
     
-    this.authService.register(this.loginForm.value).subscribe((res: any) => { 
+    this.authService.login(this.loginForm.value).subscribe((res: any) => {
         this.isSpinning = false;
-        if (res.id != null) {
+        if (res.userId != null) {
             this.snackBar.open("¡Login exitoso!", "Cerrar", { duration: 5000 });
             this.router.navigateByUrl('/dashboard'); 
         } else {
