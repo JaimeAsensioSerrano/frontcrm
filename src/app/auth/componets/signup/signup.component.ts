@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+// IMPORTANTE: Añadimos 'Router' aquí para poder navegar desde el código
+import { Router, RouterLink } from '@angular/router';
 
 // Material Imports
 import { MatCardModule } from '@angular/material/card';
@@ -9,8 +10,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // Para el efecto de carga
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar'; // Importamos el Módulo y el Servicio
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +21,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; /
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterLink,
+    RouterLink, // Necesario para el HTML
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
@@ -32,21 +35,25 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; /
 })
 export class SignupComponent {
   signupForm: FormGroup;
-  hidePassword = true;        // Ocultar/Ver contraseña
-  hideConfirmPassword = true; // Ocultar/Ver confirmación
-  isSpinning = false;         // Para simular la carga (como el nz-spin)
+  hidePassword = true;        
+  hideConfirmPassword = true; 
+  isSpinning = false;        
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,       // <--- CORREGIDO: Usamos 'Router' para navegar
+    private snackBar: MatSnackBar // <--- CORREGIDO: Usamos 'MatSnackBar' para notificaciones
+  ) {
     this.signupForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [
         Validators.required, 
-        // Esta es la Regex para: 8 chars, 1 mayúscula, 1 minúscula, 1 número, 1 especial
         Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
       ]],
       confirmPassword: ['', [Validators.required]]
-    }, { validators: this.passwordMatchValidator }); // Validador personalizado grupal
+    }, { validators: this.passwordMatchValidator }); 
   }
 
   // Validador para comprobar que las contraseñas coinciden
@@ -64,10 +71,32 @@ export class SignupComponent {
 
   register() {
     console.log(this.signupForm.value);
-    // Aquí pondremos la lógica de conexión con el Backend más adelante
-    if (this.signupForm.valid) {
-      this.isSpinning = true; // Activamos el spinner
-      setTimeout(() => this.isSpinning = false, 2000); // Simulación
+
+    // Si el formulario es inválido, mostramos error y paramos
+    if (this.signupForm.invalid) {
+      this.snackBar.open("Por favor, rellena todos los campos correctamente", "Cerrar", { duration: 3000 });
+      return; 
     }
+
+    this.isSpinning = true; 
+
+    this.authService.register(this.signupForm.value).subscribe((res) => {
+      console.log(res);
+      this.isSpinning = false;
+
+      if (res.id != null) {
+        // ÉXITO
+        this.snackBar.open("¡Registro exitoso!", "Cerrar", { duration: 5000 });
+        this.router.navigateByUrl('/login'); // <--- AHORA SÍ FUNCIONA
+      } else {
+        // ERROR CONTROLADO
+        this.snackBar.open("Algo salió mal en el registro", "Cerrar", { duration: 5000 });
+      }
+
+    }, (error) => {
+      // ERROR DE SERVIDOR
+      this.isSpinning = false;
+      this.snackBar.open("Error al registrarse. Inténtalo de nuevo.", "Cerrar", { duration: 5000 });
+    });
   }
 }
