@@ -56,9 +56,16 @@ export class LoginComponent {
     }
 
     this.isSpinning = true;
-    
+
+    // 1. Muestra lo que envías (Email y Contraseña)
+    console.log("DATOS ENVIADOS:", this.loginForm.value); // <--- NUEVO
+
     this.authService.login(this.loginForm.value).subscribe((res: any) => {
         this.isSpinning = false;
+
+        // 2. Muestra lo que recibes de Java (Token, ID, Rol)
+        console.log("RESPUESTA RECIBIDA:", res); // <--- NUEVO
+
         if (res.userId != null) {
             this.snackBar.open("¡Login exitoso!", "Cerrar", { duration: 5000 });
             this.router.navigateByUrl('/dashboard'); 
