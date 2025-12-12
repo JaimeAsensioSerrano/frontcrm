@@ -1,6 +1,6 @@
 .bg {
- background-image: url('/coches1.jpg');
-   background-size: cover;
+  background-color: transparent; 
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: calc(100vh - 64px);
@@ -82,7 +82,7 @@ mat-form-field {
   padding: 5px 0;      /* Ajuste de altura */
 }
 a {
-  color: #69f0ae; /* Un verde/azul brillante para resaltar */
+  color: #a68e45; /* Un verde/azul brillante para resaltar */
   text-decoration: none;
   font-weight: bold;
 }
