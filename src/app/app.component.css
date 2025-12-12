@@ -8,9 +8,9 @@
   z-index: 1000;
 
   /* CAMBIOS DE COLOR AQUÍ: */
-  background-color: black; /* Fondo negro */
+  background-color: black; 
   color: white; 
-  padding: 10px 20px; /* Texto base blanco */
+  padding: 10px 20px; 
 }
 
 
@@ -25,8 +25,16 @@
   color: white; 
   text-decoration: none;
 }
+.navbar-logo {
+  height: 50px; 
+  width: auto;  
+  cursor: pointer; 
+  margin-right: 10px; 
+  object-fit: contain; 
+}
 .nav-links a {
-  color: white !important; /* El !important asegura que sobrescriba el gris por defecto de Material */
+  color: #a68e45 !important; 
+  font-size: 17px;
 }
 /* El truco flexible para separar logo de botones */
 .spacer {
@@ -36,7 +44,7 @@
 /* Contenedor de los enlaces */
 .nav-links {
   display: flex;
-  gap: 10px; /* Espacio entre botones */
+  gap: 10px; 
   margin-right: 10px;
 }
 
