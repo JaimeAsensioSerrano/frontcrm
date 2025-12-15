@@ -1,1 +1,107 @@
-<p>post-car works!</p>
+<div class="container">
+    <div class="inner-content">
+
+        <h2>Post Car</h2>
+
+        <div *ngIf="isSpinning" class="spinner-overlay">
+            <mat-spinner diameter="50"></mat-spinner>
+        </div>
+
+        <form [formGroup]="postCarForm" class="car-form">
+
+            <div class="profile-badge">
+                <label for="upload_profile_image" class="upload-label">
+                    <img *ngIf="selectedFile" [src]="imagePreview" alt="profile" class="profile-image" />
+                    <div *ngIf="!selectedFile" class="placeholder-image">
+                        <mat-icon>add_a_photo</mat-icon>
+                        <span>Select Image</span>
+                    </div>
+                </label>
+
+                <input type="file" id="upload_profile_image" accept="image/x-png,image/gif,image/jpeg"
+                    (change)="onFileSelected($event)" style="display: none;">
+            </div>
+
+            <div class="form-grid">
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Select a Brand Name</mat-label>
+                    <mat-select formControlName="brand">
+                        <mat-option *ngFor="let brand of listOfBrands" [value]="brand">
+                            {{ brand }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="postCarForm.get('brand')?.hasError('required')">This Input Is
+                        Required!</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" placeholder="Example: Corolla">
+                    <mat-error *ngIf="postCarForm.get('name')?.hasError('required')">This Input Is Required!</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Select a Type</mat-label>
+                    <mat-select formControlName="type">
+                        <mat-option *ngFor="let type of listOfType" [value]="type">
+                            {{ type }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="postCarForm.get('type')?.hasError('required')">This Input Is Required!</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Select a Transmission</mat-label>
+                    <mat-select formControlName="transmission">
+                        <mat-option *ngFor="let transmission of listOfTransmission" [value]="transmission">
+                            {{ transmission }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="postCarForm.get('transmission')?.hasError('required')">This Input Is
+                        Required!</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Select a Color</mat-label>
+                    <mat-select formControlName="color">
+                        <mat-option *ngFor="let color of listOfColor" [value]="color">
+                            {{ color }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="postCarForm.get('color')?.hasError('required')">This Input Is
+                        Required!</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Model Year</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="year">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="postCarForm.get('year')?.hasError('required')">This Input Is Required!</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Price</mat-label>
+                    <input matInput type="number" formControlName="price" placeholder="Price">
+                    <mat-error *ngIf="postCarForm.get('price')?.hasError('required')">This Input Is
+                        Required!</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="description" rows="3" placeholder="Car Description"></textarea>
+                    <mat-error *ngIf="postCarForm.get('description')?.hasError('required')">This Input Is
+                        Required!</mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <button mat-raised-button color="primary" class="submit-btn" (click)="postCar()"
+                [disabled]="postCarForm.invalid">
+                Post Car
+            </button>
+
+        </form>
+    </div>
+</div>

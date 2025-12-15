@@ -1,0 +1,79 @@
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    background-color: #f5f5f5;
+    /* Fondo gris claro */
+    min-height: 100vh;
+}
+
+.inner-content {
+    width: 100%;
+    max-width: 600px;
+    /* Ancho máximo del formulario */
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Spinner Overlay */
+.spinner-overlay {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos de la imagen de perfil */
+.profile-badge {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.upload-label {
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.upload-label:hover {
+    opacity: 0.8;
+}
+
+.profile-image,
+.placeholder-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.placeholder-image {
+    border: 2px dashed #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+    color: #666;
+}
+
+/* Campos del formulario */
+.full-width {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Botón final */
+.submit-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 8px;
+    font-size: 16px;
+}
