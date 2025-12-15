@@ -25,31 +25,44 @@ export class AlmacenamientoService {
   static getUser(): any {
     // 1. Primero intentamos obtener el dato
     const user = window.localStorage.getItem(USER);
-    
+
     // 2. Comprobamos si existe (si no es null)
     if (user) {
       // 3. Solo si existe, lo convertimos
       return JSON.parse(user);
     }
-    
+
     // 4. Si no existe, devolvemos null tranquilamente
     return null;
   }
-  static getUserRole(): string{
+  static getUserRole(): string {
     const user = this.getUser();
-    if(user == null) return "";
+    if (user == null) return "";
     return user.role;
   }
-  static isAdminLoggedIn(){
-    if(this.getToken() == null) return false;
-    const role :string = this.getUserRole();
+  // En tu archivo almacenamiento.service.ts
+
+  // Añade ": boolean" después del nombre de la función
+  static isAdminLoggedIn(): boolean {
+    if (this.getToken() == null) return false;
+    const role: string = this.getUserRole();
     return role == 'ADMIN';
   }
-  static isCustomerLoggedIn(){
-    if(this.getToken() == null) return false;
-    const role :string = this.getUserRole();
+
+  // Añade ": boolean" aquí también
+  static isCustomerLoggedIn(): boolean {
+    if (this.getToken() == null) return false;
+    const role: string = this.getUserRole();
     return role == 'CUSTOMER';
   }
+
+
+  static logout(): void {
+    window.localStorage.removeItem(TOKEN);
+    window.localStorage.removeItem(USER);
+
+  }
+
 
 
 }

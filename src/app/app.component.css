@@ -1,57 +1,36 @@
-.main-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+/* app.component.scss */
 
-  /* CAMBIOS DE COLOR AQUÍ: */
-  background-color: black; 
-  color: white; 
-  padding: 10px 20px; 
-}
-
-
-/* Estilo del título/logo */
-.navbar-title {
-  font-weight: bold;
-  font-size: 1.3rem;
-  cursor: pointer;
-  margin-left: 10px;
-  
-  /* Aseguramos que el título sea blanco y sin subrayado */
-  color: white; 
-  text-decoration: none;
-}
-.navbar-logo {
-  height: 50px; 
-  width: auto;  
-  cursor: pointer; 
-  margin-right: 10px; 
-  object-fit: contain; 
-}
-.nav-links a {
-  color: #a68e45 !important; 
-  font-size: 17px;
-}
-/* El truco flexible para separar logo de botones */
+/* Esta clase empuja todo lo que esté después de ella hacia la derecha */
 .spacer {
   flex: 1 1 auto;
 }
 
-/* Contenedor de los enlaces */
-.nav-links {
-  display: flex;
-  gap: 10px; 
-  margin-right: 10px;
+.main-header {
+  /* Opcional: Para darle un poco de sombra como en Zorro */
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+  position: sticky;
+  /* Opcional: si quieres que el menú se quede fijo al hacer scroll */
+  top: 0;
+  z-index: 1000;
 }
 
-/* Estilo visual cuando un botón está activo/seleccionado */
-.active-link {
-  background: rgba(255, 246, 246, 0.753);
+.navbar-title a {
+  text-decoration: none;
+  color: white;
+  /* Asumiendo que usas un tema oscuro/primary en el toolbar */
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+/* Estilo para el enlace activo */
+.active {
+  background: rgba(255, 255, 255, 0.1);
+  /* Un fondo sutil para indicar activo */
   border-radius: 4px;
 }
 
-/* Contenedor principal para que el contenido no se pegue a los bordes */
+/* Ajustes para los enlaces/botones */
+a[mat-button],
+button[mat-button] {
+  margin-left: 8px;
+}

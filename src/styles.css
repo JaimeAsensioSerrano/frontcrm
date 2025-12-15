@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 
-html, body {
+html,
+body {
   margin: 0 !important;
   padding: 0 !important;
   height: 100%;
@@ -8,9 +10,10 @@ html, body {
   overflow-x: hidden;
 
   /* --- AÑADE ESTO AQUÍ PARA QUE SE VEA SIEMPRE --- */
-  background-image: url('/Elcoche1.png');
+  /*background-image: url('/Elcoche1.png');*/
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Esto hace que el fondo se quede quieto al hacer scroll */
+  background-attachment: fixed;
+  /* Esto hace que el fondo se quede quieto al hacer scroll */
 }

@@ -1,14 +1,39 @@
-<mat-toolbar class="main-header">
-  <img src="/logo1.png" alt="Logo" class="navbar-logo" routerLink="/">
+<mat-toolbar color="primary" class="main-header" *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
+  <span class="navbar-title">
+    <a routerLink="/login">Car Rental Service</a>
+  </span>
+
+  <span class="spacer"></span>
+  <div class="nav-links">
+    <a mat-button routerLink="/register" routerLinkActive="active">Sign Up</a>
+    <a mat-button routerLink="/login" routerLinkActive="active">Login</a>
+  </div>
+</mat-toolbar>
+
+<mat-toolbar color="primary" class="main-header" *ngIf="isAdminLoggedIn">
+  <span class="navbar-title">
+    <a routerLink="/login">LoggedIn Admin</a>
+  </span>
 
   <span class="spacer"></span>
 
   <div class="nav-links">
-    <a mat-button routerLink="/register" routerLinkActive="active-link">Sign Up</a>
-    <a mat-button routerLink="/login" routerLinkActive="active-link">Login</a>
+    <a mat-button routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+    <button mat-button (click)="logout()">Logout</button>
   </div>
 </mat-toolbar>
 
-<div class="content-container">
-  <router-outlet></router-outlet>
-</div>
+<mat-toolbar color="primary" class="main-header" *ngIf="isCustomerLoggedIn">
+  <span class="navbar-title">
+    <a routerLink="/login">LoggedIn Customer</a>
+  </span>
+
+  <span class="spacer"></span>
+
+  <div class="nav-links">
+    <a mat-button routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a>
+    <button mat-button (click)="logout()">Logout</button>
+  </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
