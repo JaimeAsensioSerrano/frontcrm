@@ -1,27 +1,43 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+// Si tienes un StorageService para el token, impórtalo. 
+// Si no, usaremos localStorage directamente como en el ejemplo.
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  // ⚠️ IMPORTANTE: Comprueba que esta URL sea la correcta de tu Backend (Spring Boot)
   private basicUrl = "http://localhost:8080/api/admin";
 
   constructor(private http: HttpClient) { }
 
-  // 1. Método para añadir coche (El que te faltaba o se llamaba diferente)
+  // 1. Método para añadir coche (AHORA CON TOKEN)
   addCar(carDto: any): Observable<any> {
-    // Fíjate que la ruta sea la correcta (ej: /car o /post-car según tu backend)
-    return this.http.post(this.basicUrl + "/car", carDto);
+    return this.http.post(this.basicUrl + "/car", carDto, {
+      headers: this.createAuthorizationHeader() // <--- ¡AQUÍ ESTÁ LA CLAVE!
+    });
   }
 
-  // 2. Método para obtener todos los coches (El que te faltaba para el console.table)
+  // 2. Método para obtener todos los coches (TAMBIÉN CON TOKEN)
   getAllCars(): Observable<any> {
-    return this.http.get(this.basicUrl + "/cars");
+    return this.http.get(this.basicUrl + "/cars", {
+      headers: this.createAuthorizationHeader()
+    });
   }
 
-  // Si tienes otros métodos aquí abajo, déjalos...
+  // --- Función auxiliar para crear la cabecera con el Token ---
+  createAuthorizationHeader(): HttpHeaders {
+    let authHeaders: HttpHeaders = new HttpHeaders();
+
+    // IMPORTANTE: Aquí asumo que guardaste el token como 'token' o 'userId' en el localStorage al hacer login.
+    // Si usas un servicio 'StorageService.getToken()', úsalo aquí.
+    const token = localStorage.getItem('token');
+
+    return authHeaders.set(
+      'Authorization',
+      'Bearer ' + token
+    );
+  }
 }
