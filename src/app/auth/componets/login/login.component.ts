@@ -1,34 +1,29 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Para el *ngIf
+import { CommonModule } from '@angular/common'; 
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
-
-// 1. ZONA DE PEDIDOS (Arriba del todo)
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-// Añadimos MatSnackBarModule aquí también para que no de error de "Provider"
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'; 
-
 import { AuthService } from '../services/auth/auth.service';
 import { AlmacenamientoService } from '../services/almacenamiento/almacenamiento.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  // 2. ZONA DE USO (Aquí es donde seguramente te faltaban cosas)
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterLink,
-    MatFormFieldModule,      // <--- IMPORTANTE: Tienen que estar aquí dentro
+    MatFormFieldModule,     
     MatInputModule,
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule        // <--- Necesario para que funcionen los mensajes
+    MatSnackBarModule        
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -56,17 +51,11 @@ export class LoginComponent {
       this.snackBar.open("Por favor, rellena todos los campos correctamente", "Cerrar", { duration: 3000 });
       return;
     }
-
     this.isSpinning = true;
-
-    // 1. Muestra lo que envías (Email y Contraseña)
-    console.log("DATOS ENVIADOS:", this.loginForm.value); // <--- NUEVO
-
+    console.log("DATOS ENVIADOS:", this.loginForm.value); 
     this.authService.login(this.loginForm.value).subscribe((res: any) => {
         this.isSpinning = false;
-
-        // 2. Muestra lo que recibes de Java (Token, ID, Rol)
-        console.log("RESPUESTA RECIBIDA:", res); // <--- NUEVO
+        console.log("RESPUESTA RECIBIDA:", res); 
 
         if (res.userId != null) {
             const user ={
@@ -85,8 +74,7 @@ export class LoginComponent {
             }
 
 
-            this.snackBar.open("¡Login exitoso!", "Cerrar", { duration: 5000 });
-            //this.router.navigateByUrl('/dashboard'); 
+            this.snackBar.open("¡Login exitoso!", "Cerrar", { duration: 5000 }); 
         } else {
             this.snackBar.open("Credenciales incorrectas", "Cerrar", { duration: 5000, panelClass: 'error-snackbar' });
         

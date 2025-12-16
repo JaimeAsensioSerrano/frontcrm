@@ -1,7 +1,8 @@
 <mat-toolbar color="primary" class="main-header" *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
-  <span class="navbar-title">
-    <a routerLink="/login">Car Rental Service</a>
-  </span>
+ <span class="navbar-title">
+   <a routerLink="/login"> <img src="logo1.png" alt="Logo" class="logo-img">
+   </a>
+</span>
 
   <span class="spacer"></span>
   <div class="nav-links">
@@ -12,7 +13,7 @@
 
 <mat-toolbar color="primary" class="main-header" *ngIf="isAdminLoggedIn">
   <span class="navbar-title">
-    <a routerLink="/login">LoggedIn Admin</a>
+    <a routerLink="/login">Admin</a>
   </span>
 
   <span class="spacer"></span>

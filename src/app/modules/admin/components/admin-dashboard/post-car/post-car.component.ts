@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-post-car',
-  standalone: false, // <--- ESTO ES LA CLAVE. Al ponerlo false, funcionará con tu AdminModule
+  standalone: false, 
   templateUrl: './post-car.component.html',
   styleUrl: './post-car.component.css'
 })
@@ -36,7 +36,6 @@ export class PostCarComponent {
 
   postCar() {
     console.log(this.postCarForm.value);
-    // Aquí pondremos la lógica para enviar al servidor más adelante
   }
 
   onFileSelected(event: any) {

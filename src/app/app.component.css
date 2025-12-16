@@ -1,35 +1,36 @@
-/* app.component.scss */
 
-/* Esta clase empuja todo lo que esté después de ella hacia la derecha */
 .spacer {
   flex: 1 1 auto;
 }
 
 .main-header {
-  /* Opcional: Para darle un poco de sombra como en Zorro */
+  background-color: black;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
   position: sticky;
-  /* Opcional: si quieres que el menú se quede fijo al hacer scroll */
+  
   top: 0;
   z-index: 1000;
+}
+.logo-img {
+    height: 50px;  
+    width: auto;   
+    vertical-align: middle;
+    margin-right: 15px; 
 }
 
 .navbar-title a {
   text-decoration: none;
   color: white;
-  /* Asumiendo que usas un tema oscuro/primary en el toolbar */
   font-weight: 500;
   font-size: 1.2rem;
 }
 
-/* Estilo para el enlace activo */
+
 .active {
   background: rgba(255, 255, 255, 0.1);
-  /* Un fondo sutil para indicar activo */
   border-radius: 4px;
 }
 
-/* Ajustes para los enlaces/botones */
 a[mat-button],
 button[mat-button] {
   margin-left: 8px;

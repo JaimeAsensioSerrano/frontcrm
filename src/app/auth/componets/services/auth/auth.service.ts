@@ -15,7 +15,6 @@ export class AuthService {
     return this.htpp.post(BASE_URL + "/api/auth/signup" , signupRequest);
   }
   login(loginRequest: any): Observable<any> {
-    // Aquí cambiamos la ruta a '/login'
     return this.htpp.post(BASE_URL + "/api/auth/login", loginRequest); 
 }
 }

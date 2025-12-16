@@ -3,14 +3,12 @@
     justify-content: center;
     padding: 30px;
     background-color: #f5f5f5;
-    /* Fondo gris claro */
     min-height: 100vh;
 }
 
 .inner-content {
     width: 100%;
     max-width: 600px;
-    /* Ancho máximo del formulario */
     background: white;
     padding: 30px;
     border-radius: 8px;
@@ -23,14 +21,13 @@ h2 {
     color: #333;
 }
 
-/* Spinner Overlay */
+
 .spinner-overlay {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
 }
 
-/* Estilos de la imagen de perfil */
 .profile-badge {
     display: flex;
     justify-content: center;
@@ -63,14 +60,10 @@ h2 {
     background-color: #fafafa;
     color: #666;
 }
-
-/* Campos del formulario */
 .full-width {
     width: 100%;
     margin-bottom: 10px;
 }
-
-/* Botón final */
 .submit-btn {
     width: 100%;
     margin-top: 20px;
