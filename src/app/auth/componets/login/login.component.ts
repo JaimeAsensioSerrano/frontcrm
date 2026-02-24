@@ -70,7 +70,6 @@ export class LoginComponent {
               this.router.navigateByUrl('/customer/dashboard');
             } else {
              this.snackBar.open("Credenciales incorrectas", "Cerrar", { duration: 5000 });
-
             }
 
 
