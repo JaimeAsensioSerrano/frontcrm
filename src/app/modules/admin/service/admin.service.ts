@@ -27,6 +27,19 @@ export class AdminService {
     });
   }
 
+
+ deleteCar(id: number): Observable<any> {
+  return this.http.delete(this.basicUrl + "/car/" + id, {
+    headers: this.createAuthorizationHeader() 
+  });
+}
+
+getCarById(id: number): Observable<any> {
+  return this.http.get(this.basicUrl + "/car/" + id, {
+    headers: this.createAuthorizationHeader() 
+});
+}
+
   // --- Función auxiliar para crear la cabecera con el Token ---
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
