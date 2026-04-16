@@ -27,14 +27,14 @@ h2:hover {
 }
 
 .child {
-  padding: 20px;
-  width: 780px;
-  background-color: white;
-  background: white;
-  box-shadow: 1px 1px 15px -7px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  margin-left: auto;
-  margin-right: auto;
+    padding: 20px;
+    width: 780px;
+    background-color: #242424 !important; 
+    color: #ffffff;
+    box-shadow: 1px 1px 15px -7px rgba(0, 0, 0, 0.5); 
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .row {
@@ -60,4 +60,43 @@ i {
   margin-right: auto;
   padding-bottom: 20px;
   margin-top: 20px;
+}
+/* Fondo negro para toda la pantalla de este componente */
+:host {
+  display: block;
+  background-color: #141414; /* Un negro elegante */
+  min-height: 100vh; /* Asegura que cubra toda la altura de la pantalla */
+  padding-top: 20px; 
+  padding-bottom: 20px;
+}
+
+/* Botón Update (Azul) */
+.btn-update {
+  background-color: #a68e45; /* Azul brillante */
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-update:hover {
+  background-color: #40a9ff; /* Azul más clarito al pasar el ratón */
+}
+
+/* Botón Delete (Rojo) */
+.btn-delete {
+  background-color: #ff4d4f; /* Rojo intenso */
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: 10px; /* Para separarlo del botón de Update */
+}
+
+.btn-delete:hover {
+  background-color: #ff7875; /* Rojo más clarito al pasar el ratón */
 }

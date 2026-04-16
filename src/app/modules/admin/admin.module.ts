@@ -15,10 +15,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { PostCarComponent } from './components/admin-dashboard/post-car/post-car.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { MatCardModule } from '@angular/material/card';
+import { UpdateCarComponent } from './components/update-car/update-car.component';
 
 @NgModule({
   declarations: [
-    PostCarComponent 
+    PostCarComponent,
+    UpdateCarComponent 
   ],
   imports: [
     CommonModule,

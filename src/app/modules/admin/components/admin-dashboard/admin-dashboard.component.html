@@ -1,6 +1,6 @@
-<div style="background-color: #F8F8F8; min-height: 91vh; padding-top: 10px;">
+<div style="background-color: #141414; min-height: 91vh; padding-top: 10px;">
 
-  <mat-card style="margin: 10px 20px; border-radius: 10px;" class="child" *ngFor="let car of cars">
+  <mat-card style="margin: 10px auto; border-radius: 10px;" class="child" *ngFor="let car of cars">
 
     <mat-card-content style="display: flex; gap: 20px; padding: 15px;">
 
@@ -10,7 +10,7 @@
       </div>
 
       <div style="flex: 1;">
-        <h2 style="cursor: pointer; color: #108ee9; margin-top: 0;">
+        <h2 style="cursor: pointer; color: #a68e45 ; margin-top: 0;">
           {{car.brand}} - {{car.name}}
         </h2>
         <p>{{car.description}}</p>
@@ -22,18 +22,18 @@
           Color : <b>{{car.color}}</b> -
           Transmission : <b>{{car.transmission}}</b> -
           Type : <b>{{car.type}}</b> -
-          Year : <b>{{car.year | date: 'yyyy'}}</b>
+          Year : <b>{{car.year}}</b>
         </h5>
 
         <mat-divider></mat-divider>
-        <div style="float: right;">
-          <button mat-raised-button color="warn" style="margin-left: 10px;" routerLink="/admin/car/{{car.id}}">
-            update
-          </button>
-          <button mat-raised-button color="warn" style="margin-left: 10px;" (click)="deleteCar(car.id)">
-            Delete
-          </button>
-        </div>
+   <div style="float: right; margin-top: 20px; margin-bottom: 10px;">
+    <button class="btn-update" style="margin-left: 10px;" routerLink="/admin/car/{{car.id}}">
+        Update
+    </button>
+    <button class="btn-delete" style="margin-left: 10px;" (click)="deleteCar(car.id)">
+        Delete
+    </button>
+</div>
       </div>
 
     </mat-card-content>

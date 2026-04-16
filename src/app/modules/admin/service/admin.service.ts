@@ -1,8 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-// Si tienes un StorageService para el token, impórtalo. 
-// Si no, usaremos localStorage directamente como en el ejemplo.
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +11,14 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  // 1. Método para añadir coche (AHORA CON TOKEN)
+  // Método para añadir coche (AHORA CON TOKEN)
   addCar(carDto: any): Observable<any> {
     return this.http.post(this.basicUrl + "/car", carDto, {
-      headers: this.createAuthorizationHeader() // <--- ¡AQUÍ ESTÁ LA CLAVE!
+      headers: this.createAuthorizationHeader()
     });
   }
 
-  // 2. Método para obtener todos los coches (TAMBIÉN CON TOKEN)
+  // Método para obtener todos los coches (TAMBIÉN CON TOKEN)
   getAllCars(): Observable<any> {
     return this.http.get(this.basicUrl + "/cars", {
       headers: this.createAuthorizationHeader()
@@ -28,24 +26,26 @@ export class AdminService {
   }
 
 
- deleteCar(id: number): Observable<any> {
-  return this.http.delete(this.basicUrl + "/car/" + id, {
-    headers: this.createAuthorizationHeader() 
-  });
-}
+  deleteCar(id: number): Observable<any> {
+    return this.http.delete(this.basicUrl + "/car/" + id, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
 
-getCarById(id: number): Observable<any> {
-  return this.http.get(this.basicUrl + "/car/" + id, {
-    headers: this.createAuthorizationHeader() 
-});
-}
+  getCarById(id: number): Observable<any> {
+    return this.http.get(this.basicUrl + "/car/" + id, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+  updateCar(carId: number, carDto: any): Observable<any> {
+    return this.http.put(this.basicUrl + "/car/" + carId, carDto, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
 
   // --- Función auxiliar para crear la cabecera con el Token ---
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
-
-    // IMPORTANTE: Aquí asumo que guardaste el token como 'token' o 'userId' en el localStorage al hacer login.
-    // Si usas un servicio 'StorageService.getToken()', úsalo aquí.
     const token = localStorage.getItem('token');
 
     return authHeaders.set(
