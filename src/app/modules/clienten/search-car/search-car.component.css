@@ -1,0 +1,132 @@
+.pantalla-completa {
+    background-color: transparent;
+    box-sizing: border-box;
+}
+
+.spinner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.filter-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    background-color: #222222;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #333333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 0px;
+}
+
+.filter-field {
+    flex: 1;
+    min-width: 200px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    margin-top: 0px;
+}
+
+.search-btn {
+    height: 54px;
+    font-size: 16px;
+    padding: 0 30px;
+}
+
+.results-container {
+    margin-top: 20px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.car-card {
+    background-color: #222222 !important;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #333333;
+}
+
+.car-card-content {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.car-image-container {
+    flex-shrink: 0;
+}
+
+.car-image {
+    height: 130px;
+    width: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.car-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.car-title {
+    color: #c49a45;
+    /* Azul elegante */
+    margin: 0;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.car-description {
+    color: #e0e0e0;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.car-info-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.car-info-grid span {
+    background-color: #616364;
+    color: #333;
+    padding: 6px 12px;
+    border-radius: 6px;
+    
+}
+
+.car-info-inline {
+    color: #bbbbbb;
+    font-size: 15px;
+}
+
+.car-info-inline strong {
+    color: #ffffff;
+}
+
+::ng-deep .mat-mdc-form-field-subscript-wrapper,
+::ng-deep .mat-form-field-subscript-wrapper {
+  display: none !important;
+}

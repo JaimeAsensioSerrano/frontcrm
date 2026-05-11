@@ -4,12 +4,12 @@ import { MatDivider } from "@angular/material/divider";
 import { MatCardContent, MatCard } from "@angular/material/card";
 import { CommonModule } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-dashboard',
   standalone: true,
-  imports: [MatDivider, MatCardContent, MatCard, CommonModule, MatDividerModule],
+  imports: [MatDivider, MatCardContent, MatCard, CommonModule, MatDividerModule, RouterModule],
   templateUrl: './cliente-dashboard.component.html',
   styleUrl: './cliente-dashboard.component.css'
 })

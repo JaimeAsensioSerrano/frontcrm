@@ -1,0 +1,67 @@
+<div class="pantalla-completa">
+    <div class="spinner-container" *ngIf="isSpinning">
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Cargando...</p>
+    </div>
+
+    <table mat-table [dataSource]="bookings" class="mat-elevation-z8" [class.hidden]="isSpinning">
+
+        <ng-container matColumnDef="username">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;"> Usuario </th>
+            <td mat-cell *matCellDef="let booking"> {{ booking.username }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;"> Email </th>
+            <td mat-cell *matCellDef="let booking"> {{ booking.email }} </td>
+        </ng-container>
+        <ng-container matColumnDef="carName">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;"> Coche </th>
+            <td mat-cell *matCellDef="let booking"> {{ booking.carName }} </td>
+        </ng-container>
+        <ng-container matColumnDef="fromDate">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;"> Desde </th>
+            <td mat-cell *matCellDef="let booking"> {{ booking.fromDate | date: 'MMM d, y' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="toDate">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;"> Hasta </th>
+            <td mat-cell *matCellDef="let booking"> {{ booking.toDate | date: 'MMM d, y' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="days">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;"> Días </th>
+            <td mat-cell *matCellDef="let booking"> {{ booking.days }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;"> Precio </th>
+            <td mat-cell *matCellDef="let booking"> {{ booking.price }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;"> Estado </th>
+            <td mat-cell *matCellDef="let booking">
+                <strong
+                    [ngStyle]="{'color': booking.bookCarsStatus === 'PENDING' ? 'red' : (booking.bookCarsStatus === 'APPROVED' ? 'green' : 'gray')}">
+                    {{ booking.bookCarsStatus === 'PENDING' ? 'PENDIENTE' : booking.bookCarsStatus }}
+                </strong>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;"> Acción </th>
+            <td mat-cell *matCellDef="let booking">
+                <span *ngIf="booking.bookCarsStatus === 'PENDING'">
+                    <button mat-raised-button color="primary" style="margin-right: 10px;"
+                        (click)="changeBookingStatus(booking.id, 'Approve')">Aprobar</button>
+                    <button mat-raised-button color="warn"
+                        (click)="changeBookingStatus(booking.id, 'Reject')">Rechazar</button>
+                </span>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

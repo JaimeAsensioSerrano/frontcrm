@@ -1,39 +1,30 @@
-<div style="background-color: #141414; min-height: 91vh; padding-top: 10px;">
+<div style="background-color: #141414; min-height: 91vh; padding-top: 20px; display: flex; flex-direction: column; align-items: center;">
 
-  <mat-card style="margin: 10px auto; border-radius: 10px;" class="child" *ngFor="let car of cars">
-
-    <mat-card-content style="display: flex; gap: 20px; padding: 15px;">
-
-      <div style="flex: 0 0 auto;">
-        <img class="profile" style="height: 130px; width: 200px; border-radius: 10px; object-fit: cover;"
-          [src]="car.processedImg" alt="profile" />
+  <mat-card class="car-card child" *ngFor="let car of cars" style="width: 85%; max-width: 1100px; margin-bottom: 20px;">
+    
+    <mat-card-content class="car-card-content">
+      
+      <div class="car-image-container">
+        <img class="car-image" [src]="car.processedImg" alt="profile">
       </div>
 
-      <div style="flex: 1;">
-        <h2 style="cursor: pointer; color: #a68e45 ; margin-top: 0;">
-          {{car.brand}} - {{car.name}}
-        </h2>
-        <p>{{car.description}}</p>
+      <div class="car-details">
+        <h2 class="car-title">{{ car.brand }} - {{ car.name }}</h2>
+        <p class="car-description">{{ car.description }}</p>
+        
+        <div class="car-info-grid">
+          <span><strong>Precio:</strong> ${{ car.price }}</span>
+          <span><strong>Color:</strong> {{ car.color }}</span>
+          <span><strong>Transmisión:</strong> {{ car.transmission }}</span>
+          <span><strong>Tipo:</strong> {{ car.type }}</span>
+          <span><strong>Año:</strong> {{ car.year }}</span>
+        </div>
+        
+        <div class="action-buttons">
+          <button class="btn-update" routerLink="/admin/car/{{car.id}}">Update</button>
+          <button class="btn-delete" (click)="deleteCar(car.id)">Delete</button>
+        </div>
 
-        <mat-divider></mat-divider>
-
-        <h5 style="margin: 15px 0; font-weight: normal;">
-          Price : <b>${{car.price}}</b> -
-          Color : <b>{{car.color}}</b> -
-          Transmission : <b>{{car.transmission}}</b> -
-          Type : <b>{{car.type}}</b> -
-          Year : <b>{{car.year}}</b>
-        </h5>
-
-        <mat-divider></mat-divider>
-   <div style="float: right; margin-top: 20px; margin-bottom: 10px;">
-    <button class="btn-update" style="margin-left: 10px;" routerLink="/admin/car/{{car.id}}">
-        Update
-    </button>
-    <button class="btn-delete" style="margin-left: 10px;" (click)="deleteCar(car.id)">
-        Delete
-    </button>
-</div>
       </div>
 
     </mat-card-content>

@@ -18,6 +18,11 @@ export class AlmacenamientoService {
     window.localStorage.removeItem(USER);
     window.localStorage.setItem(USER, JSON.stringify(user));
   }
+  static getUserId(): string{
+    const user = this.getUser();
+    if (user == null) { return ""; }
+    return user.id;
+  }
 
   static getToken() {
     return window.localStorage.getItem(TOKEN);

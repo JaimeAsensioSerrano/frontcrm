@@ -11,14 +11,12 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  // Método para añadir coche (AHORA CON TOKEN)
   addCar(carDto: any): Observable<any> {
     return this.http.post(this.basicUrl + "/car", carDto, {
       headers: this.createAuthorizationHeader()
     });
   }
 
-  // Método para obtener todos los coches (TAMBIÉN CON TOKEN)
   getAllCars(): Observable<any> {
     return this.http.get(this.basicUrl + "/cars", {
       headers: this.createAuthorizationHeader()
@@ -43,7 +41,24 @@ export class AdminService {
     });
   }
 
-  // --- Función auxiliar para crear la cabecera con el Token ---
+  getCarBookings(): Observable<any> {
+    return this.http.get(this.basicUrl + "/car/bookings", {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  changeBookingStatus(bookingId: number, status: string): Observable<any> {
+    return this.http.get(this.basicUrl + `/car/booking/${bookingId}/${status}`, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  searchCar(searchCarDto: any): Observable<any> {
+    return this.http.post(this.basicUrl + "/car/search", searchCarDto, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
     const token = localStorage.getItem('token');

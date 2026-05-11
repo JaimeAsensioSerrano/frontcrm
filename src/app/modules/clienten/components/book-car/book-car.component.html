@@ -1,0 +1,69 @@
+<div style="background-color: #141414; min-height: 91vh; padding-top: 10px;" *ngIf="car">
+
+  <div *ngIf="isSpinning" style="display: flex; justify-content: center; align-items: center; padding: 20px;">
+    <mat-spinner diameter="50"></mat-spinner>
+    <span style="color: white; margin-left: 15px;">Working...</span>
+  </div>
+
+  <mat-card style="margin: 10px auto; border-radius: 10px;" class="child">
+    <mat-card-content style="display: flex; gap: 20px; padding: 15px;">
+      <div style="flex: 0 0 auto;">
+        <img class="profile" style="height: 130px; width: 200px; border-radius: 10px; object-fit: cover;"
+             [src]="processedImage" alt="profile" />
+      </div>
+
+      <div style="flex: 1;">
+        <h2 style="cursor: pointer; color: #a68e45 ; margin-top: 0;">
+          {{car.brand}} - {{car.name}}
+        </h2>
+        <p>{{car.description}}</p>
+
+        <mat-divider></mat-divider>
+
+        <h5 style="margin: 15px 0; font-weight: normal;">
+          Price : <b>${{car.price}}</b> - 
+          Color : <b>{{car.color}}</b> - 
+          Transmission : <b>{{car.transmission}}</b> - 
+          Type : <b>{{car.type}}</b> - 
+          Year : <b>{{car.year}}</b>
+        </h5>
+
+        <mat-divider></mat-divider>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card style="margin: 20px auto; border-radius: 10px;" class="child" *ngIf="!isSpinning">
+    <mat-card-content style="padding: 20px;">
+      
+      <form [formGroup]="validateForm">
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center;">
+
+          <mat-form-field appearance="outline" style="flex: 1; min-width: 200px;">
+            <mat-label>From Date</mat-label>
+            <input matInput [matDatepicker]="fromPicker" formControlName="fromDate" placeholder="Select from date">
+            <mat-datepicker-toggle matIconSuffix [for]="fromPicker"></mat-datepicker-toggle>
+            <mat-datepicker #fromPicker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="flex: 1; min-width: 200px;">
+            <mat-label>To Date</mat-label>
+            <input matInput [matDatepicker]="toPicker" formControlName="toDate" placeholder="Select to date">
+            <mat-datepicker-toggle matIconSuffix [for]="toPicker"></mat-datepicker-toggle>
+            <mat-datepicker #toPicker></mat-datepicker>
+          </mat-form-field>
+
+          <div style="margin-bottom: 20px;">
+            <button mat-raised-button color="primary" style="background-color: #a68e45; color: white;" 
+                    (click)="bookACar()" [disabled]="validateForm.invalid">
+              Book Car
+            </button>
+          </div>
+
+        </div>
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+
+</div>

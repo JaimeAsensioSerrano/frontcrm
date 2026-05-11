@@ -16,13 +16,16 @@
     <a routerLink="/login">Admin</a>
   </span>
 
+  <div class="nav-links">
+    <a mat-button routerLink="/admin/dashboard" routerLinkActive="active">Catalogo</a>
+    <a mat-button routerLink="/admin/car" routerLinkActive="active">subir coche</a>
+    <a mat-button routerLink="/admin/bookings" routerLinkActive="active">Reservas</a>
+    <a mat-button routerLink="/admin/search" routerLinkActive="active">Buscar Coches</a>
+  </div>
+
   <span class="spacer"></span>
 
-  <div class="nav-links">
-    <a mat-button routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
-    <a mat-button routerLink="/admin/car" routerLinkActive="active">Post Car</a>
-    <button mat-button (click)="logout()">Logout</button>
-  </div>
+  <button mat-button (click)="logout()">Logout</button>
 </mat-toolbar>
 
 <mat-toolbar color="primary" class="main-header" *ngIf="isCustomerLoggedIn">
@@ -30,12 +33,15 @@
     <a routerLink="/login">Customer</a>
   </span>
 
+  <div class="nav-links">
+    <a mat-button routerLink="/customer/dashboard" routerLinkActive="active">Catalogo</a>
+    <a mat-button routerLink="/customer/my_bookings" routerLinkActive="active">Mis Reservas</a>
+   <a mat-button routerLink="/customer/car/search" routerLinkActive="active">Buscar Coches</a>
+  </div>
+
   <span class="spacer"></span>
 
-  <div class="nav-links">
-    <a mat-button routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a>
-    <button mat-button (click)="logout()">Logout</button>
-  </div>
+  <button mat-button (click)="logout()">LogOut</button>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

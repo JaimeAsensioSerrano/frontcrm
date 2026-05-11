@@ -1,0 +1,23 @@
+
+.pantalla-completa {
+  background-color: white; 
+  min-height: 100vh; 
+  padding: 40px; 
+  box-sizing: border-box;
+}
+
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.hidden {
+  display: none;
+}
+
+table {
+  width: 100%;
+}

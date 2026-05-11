@@ -35,3 +35,9 @@ a[mat-button],
 button[mat-button] {
   margin-left: 8px;
 }
+.nav-links {
+  display: flex;
+  align-items: center;
+  margin-left: 60px; 
+  gap: 40px; 
+}

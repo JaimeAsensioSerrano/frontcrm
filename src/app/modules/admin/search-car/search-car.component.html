@@ -1,0 +1,86 @@
+<div class="pantalla-completa">
+  <div class="spinner-container" *ngIf="isSpinning">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Buscando coches...</p>
+  </div>
+
+  <div class="search-container" [class.hidden]="isSpinning">
+    <div class="filter-card" [formGroup]="searchCarForm">
+      
+      <mat-form-field appearance="outline" class="filter-field">
+        <mat-label>Marca</mat-label>
+        <mat-select formControlName="brand" placeholder="Selecciona la marca">
+          <mat-option *ngFor="let brand of listOfBrands" [value]="brand">
+            {{ brand }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="searchCarForm.get('brand')?.hasError('required')">¡Obligatorio!</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="filter-field">
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="type" placeholder="Selecciona el tipo">
+          <mat-option *ngFor="let type of listOfType" [value]="type">
+            {{ type }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="searchCarForm.get('type')?.hasError('required')">¡Obligatorio!</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="filter-field">
+        <mat-label>Color</mat-label>
+        <mat-select formControlName="color" placeholder="Selecciona el color">
+          <mat-option *ngFor="let color of listOfColor" [value]="color">
+            {{ color }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="searchCarForm.get('color')?.hasError('required')">¡Obligatorio!</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="filter-field">
+        <mat-label>Transmisión</mat-label>
+        <mat-select formControlName="transmission" placeholder="Automático/Manual">
+          <mat-option *ngFor="let transmission of listOfTransmission" [value]="transmission">
+            {{ transmission }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="searchCarForm.get('transmission')?.hasError('required')">¡Obligatorio!</mat-error>
+      </mat-form-field>
+
+      <div class="btn-container">
+        <button mat-raised-button color="primary" class="search-btn" (click)="searchCar()">
+          Buscar Coche
+        </button>
+      </div>
+
+    </div>
+  </div>
+  
+  </div>
+
+  <div class="results-container">
+  <mat-card class="car-card" *ngFor="let car of cars">
+    <div class="car-card-content">
+      
+      <div class="car-image-container">
+        <img class="car-image" [src]="car.processedImg" alt="profile">
+      </div>
+
+      <div class="car-details">
+        <h2 class="car-title" style="cursor: pointer;">{{ car.brand }} - {{ car.name }}</h2>
+        <p class="car-description">{{ car.description }}</p>
+        
+        <mat-divider></mat-divider>
+        
+        <div class="car-info-grid">
+          <span><strong>Precio:</strong> ${{ car.price }}</span>
+          <span><strong>Color:</strong> {{ car.color }}</span>
+          <span><strong>Transmisión:</strong> {{ car.transmission }}</span>
+          <span><strong>Tipo:</strong> {{ car.type }}</span>
+          <span><strong>Año:</strong> {{ car.year }}</span>
+        </div>
+      </div>
+      
+    </div>
+  </mat-card>
+</div>
